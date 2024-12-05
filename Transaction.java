@@ -1,6 +1,4 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -59,6 +57,20 @@ public class Transaction {
         }
     }
 
+    // Display all transaction history
+    public void displayTransactionHistory() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("transactions.txt"))) {
+            System.out.println("Transaction History:");
+            System.out.println("====================");
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("No transaction history found or an error occurred: " + e.getMessage());
+        }
+    }
+    
     // Get the current date and time in a readable format
     private String getCurrentDateTime() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
