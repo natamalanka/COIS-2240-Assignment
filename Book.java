@@ -3,7 +3,11 @@ public class Book {
     private String title;
     private boolean available;
 
-    public Book(int id, String title) {
+    // Constructor with ID validation
+    public Book(int id, String title) throws Exception {
+        if (!isValidId(id)) {
+            throw new Exception("Invalid Book ID: " + id + ". ID must be between 100 and 999.");
+        }
         this.id = id;
         this.title = title;
         this.available = true;
@@ -33,7 +37,7 @@ public class Book {
     public void returnBook() {
         available = true;
     }
-
+    
     // Method to check if a book id is valid
     public boolean isValidId(int id) {
         return id >= 100 && id <= 999;
