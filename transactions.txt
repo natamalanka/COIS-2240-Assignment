@@ -1,0 +1,2 @@
+2024-12-04 20:43:42 - Borrowing: 1 borrowed 1
+2024-12-04 20:43:47 - Returning: 1 returned 1
