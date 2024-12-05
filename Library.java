@@ -4,15 +4,28 @@ import java.util.List;
 public class Library {
     private List<Member> members = new ArrayList<Member>();
     private List<Book> books = new ArrayList<Book>();
-
-    // Add a new member to the library
-    public void addMember(Member member) {
-        members.add(member);
-    }
     
+    // Add a new member to the library
+    public boolean addMember(Member member) {
+        // Check if the member ID already exists
+        if (findMemberById(member.getId()) != null) {
+            System.out.println("Error: A member with ID " + member.getId() + " already exists.");
+            return false; // Addition failed due to duplicate ID
+        }
+        // Addition successful
+        members.add(member);
+        return true; 
+    }
+
     // Add a new book to the library
-    public void addBook(Book book) {
+    public boolean addBook(Book book) {
+        if (findBookById(book.getId()) != null) {
+            System.out.println("Error: A book with ID " + book.getId() + " already exists.");
+            return false; // Addition failed due to duplicate ID
+        }
+        // Addition successful
         books.add(book);
+        return true; 
     }
 
     // Find a member by ID
@@ -39,7 +52,7 @@ public class Library {
     public List<Member> getMembers() {
         return members;
     }
-    
+
     // Get the list of books
     public List<Book> getBooks() {
         return books;
